@@ -14,8 +14,6 @@ int _printf(const char *const format, ...)
 	ref_t array_of_funcs[] = {
 	{"c", function_char},
 	{"s", function_string},
-	{"d", function_dec},
-	{"i",function_dec}
 	};
 
 	va_start(args, format);
@@ -32,7 +30,7 @@ int _printf(const char *const format, ...)
 			{
 				j = 0;
 
-				while (j < 4)
+				while (j < 2)
 				{
 					if (format[i + 1] == *array_of_funcs[j].ref)
 					{
@@ -41,7 +39,7 @@ int _printf(const char *const format, ...)
 					}
 					j++;
 				}
-				if (j < 4)
+				if (j < 2)
 				{
 					i = i + 1;
 				}
