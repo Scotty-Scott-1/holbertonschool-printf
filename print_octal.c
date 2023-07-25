@@ -1,22 +1,25 @@
 #include "main.h"
+#include <stdarg.h>
+#include <unistd.h>
 /**
- * printoctal - write an number in octal format
- * @args: macro for the variadic function
- * Return: the number of characters printed or failure code
- */
-int printoctal(va_list args)
+* function_string - writes the value of c and returns count
+* @args: macro of args
+* Return: int
+*/
+int function_string(va_list args)
 {
-	unsigned int o = va_arg(args, unsigned int), pow, value, ch = 0;
-	char start_to_print = 0;
+	char *c = va_arg(args, char *);
+	int i = 0;
+	int j = 0;
 
-	for (pow = 1073741824; pow >= 1; pow /= 8)
+	if (c == NULL)
 	{
-		value = (o / pow) % 8 + '0';
-		if ((start_to_print == 0 && value - '0' > 0) || start_to_print)
-		{
-			start_to_print = 1;
-			ch += write(1, &value, 1);
-		}
+		return (0);
 	}
-	return (ch);
+	while (c[i] != '\0')
+	{
+		i++;
+	}
+	j = write(1, c, i);
+	return (j);
 }
