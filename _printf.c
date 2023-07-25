@@ -36,7 +36,7 @@ int _printf(const char *const format, ...)
 					}
 				}
 				if (j < 8)
-					i = i + 1;
+					i++;
 				else
 					write_v = write_v + write(1, "%", 1);
 			}
