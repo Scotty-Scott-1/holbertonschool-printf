@@ -11,7 +11,8 @@
 int _printf(const char *format, ...)
 {
 	f_struct coresponding_char_to_funct[] = {{'c', printchar},
-	{'s', printstring}};
+	{'s', printstring}, {'d', printint}, {'i', printint}, {'u', printunsigned},
+	{'o', printoctal}, {'x', printhexa}, {'X', printhexa}};
 	va_list args;
 	int i = 0, j, w_value = 0;
 
@@ -27,7 +28,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				for (j = 0; j < 2 ; j++)
+				for (j = 0; j < 8 ; j++)
 				{
 					if (format[i + 1] == coresponding_char_to_funct[j].func_char)
 					{
@@ -35,7 +36,7 @@ int _printf(const char *format, ...)
 						break;
 					}
 				}
-				if (j != 2)
+				if (j != 8)
 					i = i + 1;
 				else
 					w_value = w_value + write(1, "%", 1);
