@@ -2,19 +2,18 @@
 #include <stdarg.h>
 #include <unistd.h>
 /**
-* _printf - a copy of the printf function
+* _printf - a copy of the printf functions
 *
-* @format: strings, chars, vars
+* @format: strings, chars, var
 * Return: int
 */
 int _printf(const char *const format, ...)
 {
 	int i = 0, j = 0, write_v = 0;
 	va_list args;
-	ref_t array_of_funcs[] = {
-	{"c", function_char}, {"s", function_string}, {"u", function_unsigned},
-	{"d", function_dec}, {"i", function_dec}, {"x", function_hexa},
-	{"X", function_heXa}, {"o", function_oct},};
+	ref_t array_of_funcs[] = {{"c", function_char}, {"s", function_string},
+	{"u", function_unsigned}, {"d", function_dec}, {"i", function_dec},
+	{"x", function_hexa}, {"X", function_heXa}, {"o", function_oct},};
 
 	va_start(args, format);
 	while (format && format[i])
