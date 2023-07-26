@@ -6,21 +6,22 @@
  */
 int printint(va_list args)
 {
-	int integer = va_arg(args, int), num_of_digits = 1, pow, value, ch = 0;
+	int integer = va_arg(args, int), pow, value, ch = 0;
+	char start_to_print = 0;
 
 	if (integer < 0)
 	{
 		integer = -integer;
 		ch += write(1, "-", 1);
 	}
-	for (pow = 10; integer >= pow; pow = pow * 10)
-	{
-		num_of_digits++;
-	}
-	for (pow = pow / 10; num_of_digits >= 1; pow = pow / 10, num_of_digits--)
+	for (pow = 1000000000; pow >= 1; pow /= 10)
 	{
 		value = (integer / pow) % 10 + '0';
-		ch += write(1, &value, 1);
+		if ((start_to_print == 0 && value - '0' > 0) || start_to_print)
+		{
+			start_to_print = 1;
+			ch += write(1, &value, 1);
+		}
 	}
 	return (ch);
 }
