@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 /**
 * function_oct - writes the value of c and returns count
 *

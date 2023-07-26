@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 /**
 * _printf - a copy of the printf functions
 *
