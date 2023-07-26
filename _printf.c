@@ -10,11 +10,11 @@
 
 int _printf(const char *format, ...)
 {
-	f_struct coresponding_char_to_funct[] = {{'c', printchar},
-	{'s', printstring}, {'d', printint}, {'i', printint}, {'u', printunsigned},
-	{'o', printoctal}, {'x', printhexa}, {'X', printhexa}, {'p', printpointer}};
+	f_struct coresponding_char_to_funct[] = {{'c', print_char},
+	{'s', print_string}, {'d', print_int}, {'i', print_int}, {'u', print_unsigned},
+	{'o', print_octal}, {'x', print_hexa}, {'X', print_heXa}, {'p', print_pointer}};
 	va_list args;
-	int i = 0, j, w_value = 0;
+	int i = 0, j, lenght = 0;
 
 	va_start(args, format);
 	while (format && format[i])
@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[i + 1] == '%')
 			{
-				w_value = w_value + write(1, "%", 1);
+				lenght = lenght + write(1, "%", 1);
 				i++;
 			}
 			else
@@ -32,21 +32,21 @@ int _printf(const char *format, ...)
 				{
 					if (format[i + 1] == coresponding_char_to_funct[j].func_char)
 					{
-						w_value = w_value + coresponding_char_to_funct[j].func_to_call(args);
+						lenght = lenght + coresponding_char_to_funct[j].func_to_call(args);
 						break;
 					}
 				}
 				if (j != 9)
 					i = i + 1;
 				else
-					w_value = w_value + write(1, "%", 1);
+					lenght = lenght + write(1, "%", 1);
 			}
 		}
 		else
-			w_value = w_value + write(1, &format[i], 1);
+			lenght = lenght + write(1, &format[i], 1);
 		i++;
 	}
 
 	va_end(args);
-	return (w_value);
+	return (lenght);
 }

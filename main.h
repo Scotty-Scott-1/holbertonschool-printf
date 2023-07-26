@@ -17,11 +17,12 @@ typedef struct funct_structure
 	int (*func_to_call)();
 } f_struct;
 
-int printchar(va_list args);
-int printstring(va_list args);
-int printint(va_list args);
-int printunsigned(va_list args);
-int printoctal(va_list args);
-int printhexa(va_list args);
-int printpointer(va_list args);
+int print_char(va_list args);
+int print_string(va_list args);
+int print_int(va_list args);
+int print_unsigned(va_list args);
+int print_oct(va_list args);
+int print_hexa(va_list args);
+int print_heXa(va_list args);
+int print_pointer(va_list args);
 #endif /* MAIN_H */
