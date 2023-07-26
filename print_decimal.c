@@ -2,12 +2,12 @@
 #include <stdarg.h>
 #include <unistd.h>
 /**
-* function_dec - writes the value of c and returns count
+* print_decimal - writes the value of c and returns count
 *
 * @args: macro of args
 * Return: int
 */
-int function_dec(va_list args)
+int print_decimal(va_list args)
 {
 	int number = va_arg(args, int);
 	int write_v = 0;
