@@ -1,35 +1,24 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 /**
-* function_hexa - writes the value of c and returns count
-*
-* @args: macro of args
-* Return: int
-*/
-int function_hexa(va_list args)
+ * printhexa - write an number in hexadecimal
+ * @args: macro for the variadic function
+ * Return: the number of characters printed or failure code
+ */
+int printhexa(va_list args)
 {
-	char temp[10];
-	unsigned int number = va_arg(args, unsigned int);
-	int i = 0;
-	unsigned int write_v = 0;
+	unsigned int h = va_arg(args, unsigned int), pow, value, ch = 0;
+	char start_to_print = 0;
 
-	while (number > 0)
+	for (pow = 268435456; pow >= 1; pow /= 16)
 	{
-		temp[i] = number % 16 + '0';
-		if (temp[i] >= 58)
+		value = (h / pow) % 16 + '0';
+		if (value > '9')
+			value += 39;
+		if ((start_to_print == 0 && value - '0' > 0) || start_to_print)
 		{
-			temp[i] += 39;
+			start_to_print = 1;
+			ch += write(1, &value, 1);
 		}
-		number = number / 16;
-		i++;
 	}
-	i--;
-	while (i >= 0)
-	{
-		write_v = write_v + write(1, &temp[i], 1);
-		i--;
-	}
-
-return (write_v);
+	return (ch);
 }

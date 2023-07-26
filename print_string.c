@@ -1,25 +1,20 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 /**
-* function_string - writes the value of c and returns count
-* @args: macro of args
-* Return: int
-*/
-int function_string(va_list args)
+ * printstring - write a string
+ * @args: macro for the variadic function
+ * Return: the number of characters printed or failure code
+ */
+int printstring(va_list args)
 {
-	char *c = va_arg(args, char *);
-	int i = 0;
-	int j = 0;
+	char *s = va_arg(args, char *);
+	int size = 0;
 
-	if (c == NULL)
+	if (s)
 	{
-		return (0);
+		for (; s[size] != '\0';)
+			size++;
+		return (write(1, s, size));
 	}
-	while (c[i] != '\0')
-	{
-		i++;
-	}
-	j = write(1, c, i);
-	return (j);
+	else
+		return (write(1, "(null)", 6));
 }

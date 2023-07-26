@@ -1,44 +1,26 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 /**
-* function_dec - writes the value of c and returns count
-*
-* @args: macro of args
-* Return: int
-*/
-int function_dec(va_list args)
+ * printint - write an int
+ * @args: macro for the variadic function
+ * Return: the number of characters printed or failure code
+ */
+int printint(va_list args)
 {
-	int number = va_arg(args, int);
-	int write_v = 0;
-	int i = 0;
-	char temp[10];
+	int integer = va_arg(args, int), num_of_digits = 1, pow, value, ch = 0;
 
-	if (number < 0)
+	if (integer < 0)
 	{
-		write_v = write_v + write(1, "-", 1);
-		number = -number;
+		integer = -integer;
+		ch += write(1, "-", 1);
 	}
-	if (number == 0)
+	for (pow = 10; integer >= pow; pow = pow * 10)
 	{
-		temp[i] = '0';
-		i++;
+		num_of_digits++;
 	}
-	else
+	for (pow = pow / 10; num_of_digits >= 1; pow = pow / 10, num_of_digits--)
 	{
-		while (number > 0)
-		{
-			temp[i++] = number % 10 + '0';
-			number = number / 10;
-
-		}
+		value = (integer / pow) % 10 + '0';
+		ch += write(1, &value, 1);
 	}
-	while (i >= 0)
-	{
-		write_v += write(1, &temp[i], 1);
-		i--;
-	}
-
-return (write_v);
-
+	return (ch);
 }

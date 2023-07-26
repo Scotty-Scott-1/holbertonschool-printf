@@ -1,19 +1,20 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
+
 /**
-* _printf - a copy of the printf functions
-*
-* @format: strings, chars, var
-* Return: int
-*/
-int _printf(const char *const format, ...)
+ * _printf - write a string with multiple variables
+ *
+ * @format: the list of chars & variables to print
+ *
+ * Return: the number of characters printed or failure code
+ */
+
+int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, write_v = 0;
+	f_struct coresponding_char_to_funct[] = {{'c', printchar},
+	{'s', printstring}, {'d', printint}, {'i', printint}, {'u', printunsigned},
+	{'o', printoctal}, {'x', printhexa}, {'X', printhexa}, {'p', printpointer}};
 	va_list args;
-	ref_t array_of_funcs[] = {{"c", function_char}, {"s", function_string},
-	{"u", function_unsigned}, {"d", function_dec}, {"i", function_dec},
-	{"x", function_hexa}, {"X", function_heXa}, {"o", function_oct},};
+	int i = 0, j, w_value = 0;
 
 	va_start(args, format);
 	while (format && format[i])
@@ -22,29 +23,30 @@ int _printf(const char *const format, ...)
 		{
 			if (format[i + 1] == '%')
 			{
-				write_v = write_v + write(1, "%", 1);
+				w_value = w_value + write(1, "%", 1);
 				i++;
 			}
 			else
 			{
-				for (j = 0; j < 8; j++)
+				for (j = 0; j < 9 ; j++)
 				{
-					if (format[i + 1] == *array_of_funcs[j].ref)
+					if (format[i + 1] == coresponding_char_to_funct[j].func_char)
 					{
-						write_v = write_v + array_of_funcs[j].func(args);
+						w_value = w_value + coresponding_char_to_funct[j].func_to_call(args);
 						break;
 					}
 				}
-				if (j < 8)
-					i++;
+				if (j != 9)
+					i = i + 1;
 				else
-					write_v = write_v + write(1, "%", 1);
+					w_value = w_value + write(1, "%", 1);
 			}
 		}
 		else
-			write_v = write_v + write(1, &format[i], 1);
+			w_value = w_value + write(1, &format[i], 1);
 		i++;
 	}
-va_end(args);
-return (write_v);
+
+	va_end(args);
+	return (w_value);
 }

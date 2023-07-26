@@ -1,28 +1,27 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdarg.h>
 #include <stddef.h>
+#include <stdarg.h>
 #include <unistd.h>
-
-/**
-* struct struct_of_funcs - a structure that contains 2 members
-* Description: a struct
-* @ref: a reference
-* @func:a pointer function
-*/
-typedef struct struct_of_funcs
-{
-	char *ref;
-	int (*func)();
-} ref_t;
 int _printf(const char *format, ...);
 
-int function_dec(va_list args);
-int function_string(va_list args);
-int function_char(va_list args);
-int function_unsigned(va_list args);
-int function_hexa(va_list args);
-int function_heXa(va_list args);
-int function_oct(va_list args);
+/**
+ * struct funct_structure - store a char and the function that
+ * we need to call when we match with the caracter
+ * @func_char: the char we search
+ * @func_to_call: the function to call when the chars matches
+ */
+typedef struct funct_structure
+{
+	char func_char;
+	int (*func_to_call)();
+} f_struct;
 
+int printchar(va_list args);
+int printstring(va_list args);
+int printint(va_list args);
+int printunsigned(va_list args);
+int printoctal(va_list args);
+int printhexa(va_list args);
+int printpointer(va_list args);
 #endif /* MAIN_H */
