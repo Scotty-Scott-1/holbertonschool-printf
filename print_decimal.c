@@ -33,6 +33,7 @@ int function_dec(va_list args)
 
 		}
 	}
+	i--;
 	while (i >= 0)
 	{
 		write_v += write(1, &temp[i], 1);
