@@ -2,12 +2,12 @@
 #include <stdarg.h>
 #include <unistd.h>
 /**
-* function_hexa - writes the value of c and returns count
+* print_hexa - writes the value of c and returns count
 *
 * @args: macro of args
 * Return: int
 */
-int function_hexa(va_list args)
+int print_hexa(va_list args)
 {
 	char temp[10];
 	unsigned int number = va_arg(args, unsigned int);

@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * printpointer - write an number in pointerdecimal
+ * print_pointer - write an number in pointerdecimal
  * @args: macro for the variadic function
  * Return: the number of characters printed or failure code
  */
-int printpointer(va_list args)
+int print_pointer(va_list args)
 {
 	unsigned int h = va_arg(args, unsigned int), pow, value, ch = 0;
 	char start_to_print = 0;

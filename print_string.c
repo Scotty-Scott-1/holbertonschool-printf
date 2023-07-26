@@ -2,11 +2,11 @@
 #include <stdarg.h>
 #include <unistd.h>
 /**
-* function_string - writes the value of c and returns count
+* print_string - writes the value of c and returns count
 * @args: macro of args
 * Return: int
 */
-int function_string(va_list args)
+int print_string(va_list args)
 {
 	char *c = va_arg(args, char *);
 	int i = 0;

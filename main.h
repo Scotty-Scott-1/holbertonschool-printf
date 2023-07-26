@@ -19,7 +19,7 @@ typedef struct funct_structure
 
 int print_char(va_list args);
 int print_string(va_list args);
-int print_int(va_list args);
+int print_decimal(va_list args);
 int print_unsigned(va_list args);
 int print_oct(va_list args);
 int print_hexa(va_list args);

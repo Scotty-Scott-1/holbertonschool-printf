@@ -1,11 +1,11 @@
 #include "main.h"
 /**
-* function_oct - writes the value of c and returns count
+* print_oct - writes the value of c and returns count
 *
 * @args: macro of args
 * Return: int
 */
-int function_oct(va_list args)
+int print_oct(va_list args)
 {
 	char temp[11];
 	unsigned int number = va_arg(args, unsigned int);

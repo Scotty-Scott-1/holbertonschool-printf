@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * printchar - write a char
+ * print_char - write a char
  * @args: macro for the variadic function
  * Return: the number of characters printed or failure code
  */
-int printchar(va_list args)
+int print_char(va_list args)
 {
 	char c = va_arg(args, int);
 

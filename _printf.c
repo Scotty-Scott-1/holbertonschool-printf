@@ -10,9 +10,10 @@
 
 int _printf(const char *format, ...)
 {
-	f_struct pair_char_and_func[] = {{'c', print_char},
-	{'s', print_string}, {'d', print_int}, {'i', print_int}, {'u', print_unsigned},
-	{'o', print_octal}, {'x', print_hexa}, {'X', print_heXa}, {'p', print_pointer}};
+	f_struct pair_char_and_func[] = {{'c', print_char}, {'s', print_string},
+	{'d', print_decimal}, {'i', print_decimal}, {'u', print_unsigned},
+	{'o', print_oct}, {'x', print_hexa}, {'X', print_heXa},
+	{'p', print_pointer}};
 	va_list args;
 	int i = 0, j, lenght = 0;
 
