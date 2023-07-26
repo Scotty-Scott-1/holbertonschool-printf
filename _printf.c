@@ -10,7 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	f_struct coresponding_char_to_funct[] = {{'c', print_char},
+	f_struct pair_char_and_func[] = {{'c', print_char},
 	{'s', print_string}, {'d', print_int}, {'i', print_int}, {'u', print_unsigned},
 	{'o', print_octal}, {'x', print_hexa}, {'X', print_heXa}, {'p', print_pointer}};
 	va_list args;
@@ -30,9 +30,9 @@ int _printf(const char *format, ...)
 			{
 				for (j = 0; j < 9 ; j++)
 				{
-					if (format[i + 1] == coresponding_char_to_funct[j].func_char)
+					if (format[i + 1] == pair_char_and_func[j].func_char)
 					{
-						lenght = lenght + coresponding_char_to_funct[j].func_to_call(args);
+						lenght = lenght + pair_char_and_func[j].func_to_call(args);
 						break;
 					}
 				}
