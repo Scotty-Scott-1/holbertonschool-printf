@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	if (format == NULL)
-	return (-1);
+		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 				else
 				{
 					if (format[i + 1] != '\0')
-					length = length + write(1, "%", 1);
+						length = length + write(1, "%", 1);
 					if (format[i + 1] == '\0')
 						length = -1; }
 			}
