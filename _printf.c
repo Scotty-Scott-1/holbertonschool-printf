@@ -38,16 +38,16 @@ int _printf(const char *format, ...)
 				if (j != 9)
 					i = i + 1;
 				else
-				{	length = length + write(1, "%", 1);
+				{
+					if (format[i + 1] != '\0')
+					length = length + write(1, "%", 1);
 					if (format[i + 1] == '\0')
 						length = -1; }
 			}
 		}
 		else
 			length = length + write(1, &format[i], 1);
-		i++;
-	}
-
+		i++; }
 	va_end(args);
 	return (length);
 }
