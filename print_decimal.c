@@ -17,6 +17,8 @@ int print_decimal(va_list args)
 
 	if (number == INT_MIN)
 		return (write(1, "-2147483648", 11));
+	if (number == 0)
+		return (write(1, "0", 1));
 	if (number < 0)
 	{
 		write_v = write_v + write(1, "-", 1);
