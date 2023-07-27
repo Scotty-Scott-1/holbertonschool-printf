@@ -14,8 +14,8 @@ int print_pointer(va_list args)
 	ch += write(1, "0x", 2);
 	do {
 		temp[i] = p % 16 + '0';
-		if (temp[i] >= 58)
-			temp[i] += 7;
+		if (temp[i] >= ':')
+			temp[i] += ('a' - ':');
 		p = p / 16;
 		i++;
 	} while (p > 0);
