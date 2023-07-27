@@ -21,7 +21,7 @@ It is to be submitted for evaluation before 28 July 2023. In this project standa
 
 ## Flow_chart
 
-![flow_chart](https://github.com/Scotty-Scott-1/holbertonschool-printf/blob/common/flow%20chart.png)
+![flow_chart](https://github.com/Scotty-Scott-1/holbertonschool-printf/blob/common/Flowchart.png)
 
 
 ## Useage
