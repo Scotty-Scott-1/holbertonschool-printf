@@ -11,7 +11,7 @@
 
 
 ## Project_description:
-This project attemps to recreate the function printf from the standard stdio library. This function should write any characters, strings, decimals, ints,, unsigned ints, hexidecials, octals passed as arguments and return the number of bytes written.
+This project attemps to recreate the function printf from the standard stdio library. This function should write any characters, strings, decimals, ints, unsigned ints, hexidecials, octals passed as arguments and return the number of bytes written.
 
 It is to be submitted for evaluation before 28 July 2023. In this project standard library function are not allowed; the only exceptions being write, malloc, free, va_start, va_end, va_copy, va_arg.
 
@@ -59,9 +59,9 @@ Test 2:
 
 If an unknown (invalid) format specifier in a string is passed as an argument the _printf function to will print the characters. The function will check whether format[i] is "%". If true the function will check whether the following character format[i + 1] is "%". If true "%" is written and i is incremented by 1. At the end of the loop i is incremented by 1 and the loop restarts if it's conditions remain true.
 
-In another case, if an unknown (invalid) format specifier in a string is passed as an argument the _printf function to will print the characters. The function will check whether format[i] is "%". If true the function will check whether the following character format[i + 1] is "%". If false the next character is evaluated against characters in a multidimensional array. Each character corresponds to a function which is subsequently called. If no matches are found "%" is written and at the end of the loop i is incremented by 1 and the loop restarted as long as it's conditions remain true.
+In another case, if an unknown (invalid) format specifier in a string is passed as an argument the _printf function to will print the characters. The function will check whether format[i] is "%". If true the function will check whether the following character format[i + 1] is "%". If false the next character is evaluated against characters in an array of structs. Each character corresponds to a function which is subsequently called. If no matches are found "%" is written and at the end of the loop i is incremented by 1 and the loop restarted as long as it's conditions remain true.
 
-In another case, if an unknown (invalid) format specifier in a string is passed as an argument the _printf function to will print the characters. The function will check whether format[i] is "%". If true the function will check whether the following character format[i + 1] is "%". If false the next character is evaluated against characters in a multidimensional array. Each character corresponds to a function which is subsequently called. If a match is found a the corresponding function is called. Its return value is written and i is incremented by 1. The loop restarted as long as it's conditions remain true.
+In another case, if an unknown (invalid) format specifier in a string is passed as an argument the _printf function to will print the characters. The function will check whether format[i] is "%". If true the function will check whether the following character format[i + 1] is "%". If false the next character is evaluated against characters in an array of structs. Each character corresponds to a function which is subsequently called. If a match is found a the corresponding function is called. Its return value is written and i is incremented by 1. The loop restarted as long as it's conditions remain true.
 
 As discussed the following function will return "%r"
 _printf("Unknown:[%%r]\n")
