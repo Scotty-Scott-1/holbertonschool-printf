@@ -5,7 +5,7 @@
 * print_heXa - writes the value of c and returns count
 *
 * @args: macro of args
-* Return: int
+* Return: number of bytes printed or -1
 */
 int print_heXa(va_list args)
 {
@@ -14,8 +14,8 @@ int print_heXa(va_list args)
 	int i = 0;
 	unsigned int write_v = 0;
 
-	while (number > 0)
-	{
+
+	do {
 		temp[i] = number % 16 + '0';
 		if (temp[i] >= 58)
 		{
@@ -23,7 +23,7 @@ int print_heXa(va_list args)
 		}
 		number = number / 16;
 		i++;
-	}
+	} while (number > 0);
 	i--;
 	while (i >= 0)
 	{
