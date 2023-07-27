@@ -15,39 +15,39 @@ int _printf(const char *format, ...)
 	{'o', print_oct}, {'x', print_hexa}, {'X', print_heXa},
 	{'p', print_pointer}};
 	va_list args;
-	int i = 0, j, lenght = 0;
+	int i = 0, j, length = 0;
 
 	va_start(args, format);
-	while (format && format[i])
+	if (format == NULL)
+	return (-1);
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '%')
-			{
-				lenght = lenght + write(1, "%", 1);
-				i++;
-			}
+			{	length = length + write(1, "%", 1);
+				i++; }
 			else
 			{
 				for (j = 0; j < 9 ; j++)
 				{
 					if (format[i + 1] == pair_char_and_func[j].func_char)
-					{
-						lenght = lenght + pair_char_and_func[j].func_to_call(args);
-						break;
-					}
+					{	length = length + pair_char_and_func[j].func_to_call(args);
+						break; }
 				}
 				if (j != 9)
 					i = i + 1;
 				else
-					lenght = lenght + write(1, "%", 1);
+				{	length = length + write(1, "%", 1);
+					if (format[i + 1] == '\0')
+						length = -1; }
 			}
 		}
 		else
-			lenght = lenght + write(1, &format[i], 1);
+			length = length + write(1, &format[i], 1);
 		i++;
 	}
 
 	va_end(args);
-	return (lenght);
+	return (length);
 }
