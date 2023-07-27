@@ -1,0 +1,70 @@
+.TH _printf
+.SH NAME
+_printf \- Print a string and variables with format conversion
+.SH SYNOPSIS
+.B _printf("format", var1, var2, ...);
+.SH DESCRIPTION
+.B _printf
+This function will print a string of characters and replace % by the variable sent after according to the format specifier after the percent and returns the number of characters successfully printed.
+.SH Example
+_printf("Hello %s\\n", "Name");
+.TP
+This will print : Hello Name
+.SH CONVERSION SPECIFIERS
+.TP
+.BR c
+The int argument is converted to an unsigned char, and the resulting character is written.
+.TP
+.BR s
+The const char * argument is expected to be a pointer to an array of character type. Characters from the array are written up to (but not including) a terminating null byte ('\0')
+.TP
+.BR i,d
+The int argument is converted to signed decimal notation.
+.TP
+.BR o
+The unsigned int argument is converted to unsigned octal.
+.TP
+.BR x,X
+The unsigned int argument is converted unsigned hexadecimal using lower(x) or upper(X) case
+.TP
+.BR u
+The unsigned int argument is converted to unsigned decimal.
+.TP
+.BR p
+The void * pointer argument is printed in hexadecimal with the prefix 0x.
+.SH RETURN VALUE
+_printf returns the number of characters successfully printed (excluding the null byte)
+.SH WARNING(S)
+Be careful to enter the same amount of specifiers in the format string as the number of variables.
+.SH Notes
+If you want to print a % you can escape it by putting two % in a row, like this : "%%" It will print only one.
+.SH FILES
+_printf.c
+.TP
+main.h
+.TP
+print_char.c
+.TP
+print_string.c
+.TP
+print_decimal.c
+.TP
+print_oct.c
+.TP
+print_hexa.c
+.TP
+print_heXa.c
+.TP
+print_pointer.c
+.TP
+print_unsigned.c
+.SH Getting help
+If you need any help you can find our contact info on github :
+.TP
+username : Scotty-Scott-1
+.TP
+username : ErwanR-Holberton
+.SH History
+24th July to 28th July - Originaly written by Solomon and Erwan
+.TP
+Present day - Currently maintained by Solomon and Erwan
