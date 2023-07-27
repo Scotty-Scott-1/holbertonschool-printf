@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * print_pointer - write an number in pointerdecimal
  * @args: macro for the variadic function
@@ -6,20 +7,23 @@
  */
 int print_pointer(va_list args)
 {
-	unsigned int h = va_arg(args, unsigned int), pow, value, ch = 0;
-	char start_to_print = 0;
+	unsigned long p = va_arg(args, unsigned long);
+	int ch = 0, i = 0;
+	char temp[16];
 
 	ch += write(1, "0x", 2);
-	for (pow = 268435456; pow > 0; pow /= 16)
+	do {
+		temp[i] = p % 16 + '0';
+		if (temp[i] >= 58)
+			temp[i] += 7;
+		p = p / 16;
+		i++;
+	} while (p > 0);
+	i--;
+	while (i >= 0)
 	{
-		value = (h / pow) % 16 + '0';
-		if (value > '9')
-			value += 39;
-		if ((start_to_print == 0 && value - '0' > 0) || start_to_print)
-		{
-			start_to_print = 1;
-			ch += write(1, &value, 1);
-		}
+		ch += write(1, &temp[i], 1);
+		i--;
 	}
 	return (ch);
 }
