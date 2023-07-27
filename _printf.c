@@ -1,5 +1,25 @@
 #include "main.h"
+/**
+ * search_in_array - searches in the array of structures
+ *
+ * @format: the list of chars & variables to print
+ *
+ * Return: the number of characters printed or failure code
+ */
+int search_in_array(f_struct *pair_char_and_func, char c, va_list args)
+{
+	int length = 0, j;
 
+	for (j = 0; j < 9 ; j++)
+	{
+		if (c == pair_char_and_func[j].func_char)
+		{
+			length = length + pair_char_and_func[j].func_to_call(args);
+			break;
+		}
+	}
+	return (length);
+}
 /**
  * _printf - write a string with multiple variables
  *
@@ -33,14 +53,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				for (j = 0; j < 9 ; j++)
-				{
-					if (format[i + 1] == pair_char_and_func[j].func_char)
-					{
-						length = length + pair_char_and_func[j].func_to_call(args);
-						break;
-					}
-				}
+				search_in_array(pair_char_and_func, format[i + 1], args);
 				if (j != 9)
 					i = i + 1;
 				else
