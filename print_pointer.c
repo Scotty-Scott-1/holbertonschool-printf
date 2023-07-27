@@ -12,7 +12,7 @@ int print_pointer(va_list args)
 	char temp[16];
 
 	if (p == 0)
-		return (write(1, "(nil)", 6));
+		return (write(1, "(nil)", 5));
 	ch += write(1, "0x", 2);
 	do {
 		temp[i] = p % 16 + '0';
