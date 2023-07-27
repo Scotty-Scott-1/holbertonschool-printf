@@ -19,6 +19,7 @@ int print_unsigned(va_list args)
 		temp[i++] = number % 10 + '0';
 		number = number / 10;
 	}
+	i--;
 	while (i >= 0)
 	{
 		write_v = write_v + write(1, &temp[i], 1);
