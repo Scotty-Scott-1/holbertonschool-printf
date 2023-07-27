@@ -11,6 +11,8 @@ int print_pointer(va_list args)
 	int ch = 0, i = 0;
 	char temp[16];
 
+	if (p == 0)
+		return (write(1, "(nil)", 6));
 	ch += write(1, "0x", 2);
 	do {
 		temp[i] = p % 16 + '0';
