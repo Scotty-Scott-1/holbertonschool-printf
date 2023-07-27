@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	f_struct pair_char_and_func[] = {{'c', print_char}, {'s', print_string},
 	{'d', print_decimal}, {'i', print_decimal}, {'u', print_unsigned},
 	{'o', print_oct}, {'x', print_hexa}, {'X', print_heXa},
-	{'p', print_pointer}};
+	{'p', print_pointer}, {'b', print_binary}};
 	va_list args;
 	int i = 0, j, length = 0;
 
@@ -29,13 +29,13 @@ int _printf(const char *format, ...)
 				i++; }
 			else
 			{
-				for (j = 0; j < 9 ; j++)
+				for (j = 0; j < 10 ; j++)
 				{
 					if (format[i + 1] == pair_char_and_func[j].func_char)
 					{	length = length + pair_char_and_func[j].func_to_call(args);
 						break; }
 				}
-				if (j != 9)
+				if (j != 10)
 					i = i + 1;
 				else
 				{

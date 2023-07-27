@@ -25,4 +25,5 @@ int print_oct(va_list args);
 int print_hexa(va_list args);
 int print_heXa(va_list args);
 int print_pointer(va_list args);
+int print_binary(va_list args);
 #endif /* MAIN_H */
