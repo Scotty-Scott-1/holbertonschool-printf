@@ -12,7 +12,7 @@ int print_oct(va_list args)
 	int i = 0;
 	unsigned int write_v = 0;
 
-	while (number >= 1 && i < 11)
+	while (number >= 1)
 	{
 		temp[i] = number % 8 + '0';
 		number = number / 8;
